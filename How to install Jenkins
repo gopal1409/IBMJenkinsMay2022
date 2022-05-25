@@ -1,3 +1,4 @@
+ sudo -i
  1  apt-get update
 
     3  apt install default-jdk
