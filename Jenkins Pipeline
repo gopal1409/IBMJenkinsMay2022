@@ -1,0 +1,11 @@
+ 14  git clone https://github.com/gopal1409/springchat.git
+   15  cd springchat/
+   16  ls
+   17  rm -rf .git
+   18  git init
+   19  git config --global user.name "gopal"
+   20  git config --global user.email "gopal1409@gmail.com"
+   21  git add .
+   22  git commit -m "spring chat app"
+   23  git log
+########create a repo in github. and push the code inside it. 
