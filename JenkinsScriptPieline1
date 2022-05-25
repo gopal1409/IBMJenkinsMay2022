@@ -16,5 +16,17 @@ pipeline {
                 echo 'deploying'
             }
         }
+        stage('run-parellel'){
+            steps {
+                parallel (
+                    a: {
+                        echo "this is branch a"
+                    },
+                    b: {
+                        echo "this is branch b"
+                    }
+                )
+            }
+        }
     }
 }
