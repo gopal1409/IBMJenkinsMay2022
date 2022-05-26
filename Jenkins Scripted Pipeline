@@ -34,5 +34,10 @@ pipeline {
                 recordIssues(tools: [checkStyle(pattern: '**/checkstyle-result.xml')])
             }
         }
+        stage('build docker image') {
+            steps {
+                sh 'docker build -t gopal1409/chatapp .'
+            }
+        }
     }
 }
