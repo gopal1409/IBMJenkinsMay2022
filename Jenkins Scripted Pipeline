@@ -24,5 +24,15 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
+        stage('check style') {
+            steps {
+                sh 'mvn checkstyle:checkstyle'
+            }
+        }
+        stage('checkstyle report') {
+            steps {
+                recordIssues(tools: [checkStyle(pattern: '**/checkstyle-result.xml')])
+            }
+        }
     }
 }
