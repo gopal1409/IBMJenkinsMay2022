@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven "localMaven"
     }
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('gopal-dockerhub')
+    }
     stages {
         stage('scm checkout') {
             steps {
@@ -39,5 +42,16 @@ pipeline {
                 sh 'docker build -t gopal1409/chatapp .'
             }
         }
+        stage('docker login') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        stage('push docker image') {
+            steps {
+                sh 'docker push gopal1409/chatapp'
+            }
+        }
+       
     }
 }
