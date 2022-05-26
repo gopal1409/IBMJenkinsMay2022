@@ -52,6 +52,11 @@ pipeline {
                 sh 'docker push gopal1409/chatapp'
             }
         }
+        stage('docker using ansible') {
+            steps {
+                ansiblePlaybook credentialsId: 'ansible', disableHostKeyChecking: true,inventory: 'dev.inv', playbook: 'docker.yml'
+            }
+        }
        
     }
 }
